@@ -1,0 +1,17 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-05-18T22:43:00-05:00",
+  "id": "python-1",
+  "duration": 60,
+  "title": "Codelab: Práctica de Python - Ejercicios Integradores",
+  "summary": "Práctica de Python - Ejercicios Integradores",
+  "source": "python-1.md",
+  "theme": "",
+  "status": null,
+  "category": null,
+  "tags": [],
+  "url": "python-1"
+}
