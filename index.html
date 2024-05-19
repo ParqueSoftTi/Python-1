@@ -1,0 +1,360 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Codelab: Práctica de Python - Ejercicios Integradores</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="python-1"
+                  title="Codelab: Práctica de Python - Ejercicios Integradores"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Objetivo:" duration="0">
+        <p>El objetivo de este Codelab, es que puedas practicar todo lo visto en clase, mediante una serie de mini proyectos donde podrás poner en practica tus habilidades con Python.</p>
+<p class="image-container"><img alt="python" src="img\\4035226c6c6f0349.jpg"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Proyecto 1: Calculadora Básica" duration="15">
+        <h2 is-upgraded>Objetivo:</h2>
+<ul>
+<li>Aplicar el uso de funciones, estructuras de control y operadores.</li>
+<li>Practicar la creación de un menú interactivo.</li>
+</ul>
+<h2 is-upgraded>Ejercicio:</h2>
+<p>Crea una calculadora básica que realice las siguientes operaciones: suma, resta, multiplicación y división. El programa debe:</p>
+<ol type="1">
+<li><strong>Mostrar un menú con las opciones de operaciones:</strong> El menú permite al usuario elegir qué operación quiere realizar.</li>
+<li><strong>Pedir al usuario que elija una operación:</strong> Se usa <code>input</code> para recibir la opción elegida.</li>
+<li><strong>Solicitar dos números:</strong> Los números se ingresan como <code>float</code> para permitir operaciones con decimales.</li>
+<li><strong>Realizar la operación elegida y mostrar el resultado:</strong> Se usan funciones para cada operación.</li>
+<li><strong>Permitir al usuario realizar otra operación o salir del programa:</strong> Un bucle <code>while</code> permite repetir el proceso hasta que el usuario decida salir.</li>
+</ol>
+<h2 is-upgraded>Desarrollo:</h2>
+<p>Primero definimos las funciones para las operaciones básicas</p>
+<pre><code language="language-python" class="language-python">def suma(a, b):
+    # Función para sumar dos números
+    return a + b
+
+def resta(a, b):
+    # Función para restar el segundo número del primero
+    return a - b
+
+def multiplicacion(a, b):
+    # Función para multiplicar dos números
+    return a * b
+
+def division(a, b):
+    # Función para dividir el primer número por el segundo
+    if b != 0:
+        return a / b
+    else:
+        return &#34;Error: División por cero&#34;
+</code></pre>
+<p>Luego definimos la función para mostrar el menú para seleccionar la operación</p>
+<pre><code language="language-python" class="language-python">def mostrar_menu():
+    # Función para mostrar el menú de opciones
+    print(&#34;Calculadora Básica&#34;)
+    print(&#34;1. Suma&#34;)
+    print(&#34;2. Resta&#34;)
+    print(&#34;3. Multiplicación&#34;)
+    print(&#34;4. División&#34;)
+    print(&#34;5. Salir&#34;)
+</code></pre>
+<p>Por último utilizamos un <code>while</code> en <code>True</code> para que la ejecución del código continue hasta que el usuario selecciones la opción <code>5. Salir</code> en el menú</p>
+<pre><code language="language-python" class="language-python">while True:
+    mostrar_menu()
+    opcion = input(&#34;Elige una opción: &#34;)
+
+    if opcion == &#34;5&#34;:
+        # Salir del programa
+        print(&#34;Saliendo del programa.&#34;)
+        break
+
+    if opcion in [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;]:
+        # Solicitar números al usuario
+        num1 = float(input(&#34;Ingresa el primer número: &#34;))
+        num2 = float(input(&#34;Ingresa el segundo número: &#34;))
+
+        # Realizar la operación correspondiente
+        if opcion == &#34;1&#34;:
+            print(f&#34;Resultado: {suma(num1, num2)}&#34;)
+        elif opcion == &#34;2&#34;:
+            print(f&#34;Resultado: {resta(num1, num2)}&#34;)
+        elif opcion == &#34;3&#34;:
+            print(f&#34;Resultado: {multiplicacion(num1, num2)}&#34;)
+        elif opcion == &#34;4&#34;:
+            print(f&#34;Resultado: {division(num1, num2)}&#34;)
+    else:
+        # Manejar opción no válida
+        print(&#34;Opción no válida. Inténtalo de nuevo.&#34;)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Proyecto 2: Gestión de Contactos" duration="15">
+        <h2 is-upgraded>Objetivos:</h2>
+<ul>
+<li>Aplicar el uso de listas, clases y funciones.</li>
+<li>Practicar el manejo de entrada y salida de datos.</li>
+</ul>
+<h2 is-upgraded>Ejercicio:</h2>
+<p>Crea un programa para gestionar una lista de contactos. Cada contacto debe tener un nombre y un número de teléfono. El programa debe:</p>
+<ol type="1">
+<li><strong>Permitir agregar nuevos contactos:</strong> Utiliza una clase <code>Contacto</code> y almacena objetos en una lista.</li>
+<li><strong>Mostrar todos los contactos:</strong> Recorre la lista y muestra los detalles de cada contacto.</li>
+<li><strong>Buscar un contacto por nombre:</strong> Permite encontrar y mostrar información de un contacto específico.</li>
+<li><strong>Eliminar un contacto por nombre:</strong> Permite remover un contacto de la lista.</li>
+<li><strong>Permitir al usuario realizar otra operación o salir del programa:</strong> Un bucle while permite repetir el proceso hasta que el usuario decida salir.</li>
+</ol>
+<h2 is-upgraded>Desarrollo:</h2>
+<p>Primero definimos la clase contacto.</p>
+<pre><code language="language-python" class="language-python">class Contacto:
+    def __init__(self, nombre, telefono):
+        # Constructor de la clase Contacto
+        self.nombre = nombre
+        self.telefono = telefono
+</code></pre>
+<p>Definimos la función para mostrar el menú.</p>
+<pre><code language="language-python" class="language-python">def mostrar_menu():
+    # Función para mostrar el menú de opciones
+    print(&#34;Gestión de Contactos&#34;)
+    print(&#34;1. Agregar contacto&#34;)
+    print(&#34;2. Mostrar contactos&#34;)
+    print(&#34;3. Buscar contacto&#34;)
+    print(&#34;4. Eliminar contacto&#34;)
+    print(&#34;5. Salir&#34;)
+</code></pre>
+<p>Creamos una lista para guardar los contactos.</p>
+<pre><code language="language-python" class="language-python">contactos = []
+</code></pre>
+<p>Por ultimo creamos el <code>while</code> en <code>True</code> para que solo termine su ejecución cuando el usuario seleccione la opción <code>5. Salir</code></p>
+<pre><code language="language-python" class="language-python">while True:
+    mostrar_menu()
+    opcion = input(&#34;Elige una opción: &#34;)
+
+    if opcion == &#34;5&#34;:
+        # Salir del programa
+        print(&#34;Saliendo del programa.&#34;)
+        break
+
+    if opcion == &#34;1&#34;:
+        # Agregar un nuevo contacto
+        nombre = input(&#34;Ingresa el nombre: &#34;)
+        telefono = input(&#34;Ingresa el teléfono: &#34;)
+        contacto = Contacto(nombre, telefono)
+        contactos.append(contacto)
+        print(&#34;Contacto agregado.&#34;)
+    elif opcion == &#34;2&#34;:
+        # Mostrar todos los contactos
+        for c in contactos:
+            print(f&#34;Nombre: {c.nombre}, Teléfono: {c.telefono}&#34;)
+    elif opcion == &#34;3&#34;:
+        # Buscar un contacto por nombre
+        nombre = input(&#34;Ingresa el nombre a buscar: &#34;)
+        encontrado = False
+        for c in contactos:
+            if c.nombre == nombre:
+                print(f&#34;Nombre: {c.nombre}, Teléfono: {c.telefono}&#34;)
+                encontrado = True
+                break
+        if not encontrado:
+            print(&#34;Contacto no encontrado.&#34;)
+    elif opcion == &#34;4&#34;:
+        # Eliminar un contacto por nombre
+        nombre = input(&#34;Ingresa el nombre a eliminar: &#34;)
+        for c in contactos:
+            if c.nombre == nombre:
+                contactos.remove(c)
+                print(&#34;Contacto eliminado.&#34;)
+                break
+    else:
+        # Manejar opción no válida
+        print(&#34;Opción no válida. Inténtalo de nuevo.&#34;)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Proyecto 3: Sistema de Inventario" duration="15">
+        <h2 is-upgraded>Objetivos:</h2>
+<ul>
+<li>Aplicar el uso de clases, listas, módulos y manejo de errores.</li>
+<li>Desarrollar una aplicación más compleja con múltiples funcionalidades.</li>
+</ul>
+<h2 is-upgraded>Ejercicio:</h2>
+<p>Crea un sistema de inventario para una tienda. El programa debe:</p>
+<ol type="1">
+<li><strong>Permitir agregar nuevos productos (nombre, cantidad, precio):</strong> Utiliza una clase <code>Producto</code> y almacena objetos en una lista.</li>
+<li><strong>Mostrar todos los productos:</strong> Recorre la lista y muestra los detalles de cada producto.</li>
+<li><strong>Buscar un producto por nombre:</strong> Permite encontrar y mostrar información de un producto específico.</li>
+<li><strong>Actualizar la cantidad de un producto:</strong> Permite modificar la cantidad de un producto existente.</li>
+<li><strong>Eliminar un producto:</strong> Permite remover un producto de la lista.</li>
+<li><strong>Manejar posibles errores (como ingresar datos no válidos):</strong> Utiliza bloques try-except para manejar errores en las entradas.</li>
+<li><strong>Permitir al usuario realizar otra operación o salir del programa:</strong> Un bucle while permite repetir el proceso hasta que el usuario decida salir.</li>
+</ol>
+<h2 is-upgraded>Desarrollo:</h2>
+<p>Primero definimos la clase producto.</p>
+<pre><code language="language-python" class="language-python">class Producto:
+    def __init__(self, nombre, cantidad, precio):
+        # Constructor de la clase Producto
+        self.nombre = nombre
+        self.cantidad = cantidad
+        self.precio = precio
+</code></pre>
+<p>Definimos la función para mostrar el menú de selección</p>
+<pre><code language="language-python" class="language-python">def mostrar_menu():
+    # Función para mostrar el menú de opciones
+    print(&#34;Sistema de Inventario&#34;)
+    print(&#34;1. Agregar producto&#34;)
+    print(&#34;2. Mostrar productos&#34;)
+    print(&#34;3. Buscar producto&#34;)
+    print(&#34;4. Actualizar cantidad&#34;)
+    print(&#34;5. Eliminar producto&#34;)
+    print(&#34;6. Salir&#34;)
+</code></pre>
+<p>Necesitamos una lista para nuestro inventario de productos</p>
+<pre><code language="language-python" class="language-python">inventario = []
+</code></pre>
+<p>Por último definimos un <code>while</code> en <code>True</code> para que la ejecución no termine hasta que el usuario seleccione la opción <code>6. Salir</code></p>
+<pre><code language="language-python" class="language-python">while True:
+    mostrar_menu()
+    opcion = input(&#34;Elige una opción: &#34;)
+
+    if opcion == &#34;6&#34;:
+        # Salir del programa
+        print(&#34;Saliendo del programa.&#34;)
+        break
+
+    if opcion == &#34;1&#34;:
+        # Agregar un nuevo producto
+        nombre = input(&#34;Ingresa el nombre del producto: &#34;)
+        try:
+            cantidad = int(input(&#34;Ingresa la cantidad: &#34;))
+            precio = float(input(&#34;Ingresa el precio: &#34;))
+            producto = Producto(nombre, cantidad, precio)
+            inventario.append(producto)
+            print(&#34;Producto agregado.&#34;)
+        except ValueError:
+            # Manejar errores de entrada no válida
+            print(&#34;Error: Entrada no válida.&#34;)
+    elif opcion == &#34;2&#34;:
+        # Mostrar todos los productos
+        for p in inventario:
+            print(f&#34;Nombre: {p.nombre}, Cantidad: {p.cantidad}, Precio: {p.precio}&#34;)
+    elif opcion == &#34;3&#34;:
+        # Buscar un producto por nombre
+        nombre = input(&#34;Ingresa el nombre del producto a buscar: &#34;)
+        encontrado = False
+        for p in inventario:
+            if p.nombre == nombre:
+                print(f&#34;Nombre: {p.nombre}, Cantidad: {p.cantidad}, Precio: {p.precio}&#34;)
+                encontrado = True
+                break
+        if not encontrado:
+            print(&#34;Producto no encontrado.&#34;)
+    elif opcion == &#34;4&#34;:
+        # Actualizar la cantidad de un producto
+        nombre = input(&#34;Ingresa el nombre del producto a actualizar: &#34;)
+        try:
+            nueva_cantidad = int(input(&#34;Ingresa la nueva cantidad: &#34;))
+            for p in inventario:
+                if p.nombre == nombre:
+                    p.cantidad = nueva_cantidad
+                    print(&#34;Cantidad actualizada.&#34;)
+                    break
+        except ValueError:
+            # Manejar errores de entrada no válida
+            print(&#34;Error: Entrada no válida.&#34;)
+    elif opcion == &#34;5&#34;:
+        # Eliminar un producto por nombre
+        nombre = input(&#34;Ingresa el nombre del producto a eliminar: &#34;)
+        for p in inventario:
+            if p.nombre == nombre:
+                inventario.remove(p)
+                print(&#34;Producto eliminado.&#34;)
+                break
+    else:
+        # Manejar opción no válida
+        print(&#34;Opción no válida. Inténtalo de nuevo.&#34;)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Ejercicio Propuesto: Sistema de Gestión de Tareas" duration="15">
+        <h2 is-upgraded>Objetivos:</h2>
+<ul>
+<li>Aplicar el uso de clases, listas, funciones y manejo de errores.</li>
+<li>Practicar la creación de un programa interactivo con múltiples funcionalidades.</li>
+</ul>
+<h2 is-upgraded>Descripción del Ejercicio:</h2>
+<p>Desarrolla un sistema de gestión de tareas que permita al usuario añadir, ver, buscar, actualizar y eliminar tareas. Cada tarea debe tener un título, una descripción y un estado (pendiente o completada). El programa debe:</p>
+<ol type="1">
+<li><strong>Permitir agregar nuevas tareas:</strong> Utiliza una clase Tarea para almacenar los detalles de cada tarea y guarda los objetos en una lista.</li>
+<li><strong>Mostrar todas las tareas:</strong> Recorre la lista y muestra los detalles de cada tarea.</li>
+<li><strong>Buscar una tarea por título:</strong> Permite encontrar y mostrar información de una tarea específica.</li>
+<li><strong>Actualizar el estado de una tarea:</strong> Permite cambiar el estado de una tarea a &#34;completada&#34;.</li>
+<li><strong>Eliminar una tarea por título:</strong> Permite remover una tarea de la lista.</li>
+<li><strong>Manejar posibles errores (como ingresar datos no válidos):</strong> Utiliza bloques try-except para manejar errores en las entradas.</li>
+<li><strong>Permitir al usuario realizar otra operación o salir del programa:</strong> Un bucle while permite repetir el proceso hasta que el usuario decida salir.</li>
+</ol>
+<h2 is-upgraded>Guía para el Desarrollo del Ejercicio:</h2>
+<ul>
+<li>Entender la Estructura del Código:<ul>
+<li>Revisa cómo se define la clase Tarea y cómo se inicializan sus atributos.</li>
+<li>Observa cómo el menú es mostrado y cómo las opciones son manejadas en el bucle while.</li>
+</ul>
+</li>
+<li>Completar las Funcionalidades:<ul>
+<li>Añade la funcionalidad para actualizar la descripción de una tarea si lo deseas.</li>
+<li>Mejora la búsqueda para que no sea sensible a mayúsculas/minúsculas.</li>
+</ul>
+</li>
+<li>Manejo de Errores:<ul>
+<li>Añade bloques try-except donde sea necesario para manejar entradas no válidas.</li>
+<li>Considera qué errores podrían ocurrir (por ejemplo, intentar actualizar o eliminar una tarea que no existe).</li>
+</ul>
+</li>
+<li>Mejorar la Interfaz del Usuario:<ul>
+<li>Añade mensajes más detallados para guiar al usuario a través del programa.</li>
+<li>Incluye opciones adicionales si consideras necesario, como filtrar tareas por estado.</li>
+</ul>
+</li>
+</ul>
+<p>¡Buena suerte! Este ejercicio te ayudará a consolidar tus conocimientos y habilidades en Python, dándote una base sólida para desarrollar aplicaciones más complejas.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
